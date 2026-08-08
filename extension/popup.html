@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parity 京东采集</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <div class="brand-row">
+        <div class="mark">P</div>
+        <div>
+          <h1>Parity 当前页采集</h1>
+          <p>只读取你当前打开的京东搜索结果</p>
+        </div>
+      </div>
+
+      <section class="card">
+        <label for="token">本机配对令牌</label>
+        <div class="token-row">
+          <input id="token" type="password" autocomplete="off" placeholder="粘贴 PARITY_BRIDGE_TOKEN">
+          <button id="save" class="secondary" type="button">保存</button>
+        </div>
+        <div class="endpoint">接收地址：127.0.0.1:8765</div>
+      </section>
+
+      <button id="collect" class="primary" type="button">采集当前搜索页</button>
+      <div id="status" class="status idle" role="status" aria-live="polite">
+        请先打开京东搜索结果页
+      </div>
+
+      <p class="privacy">不会读取或发送 Cookie、密码、localStorage、浏览历史或完整页面 HTML。</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

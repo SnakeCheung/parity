@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parity-browser-sandbox"
+version = "0.1.0"
+description = "Standalone isolation boundary for browser automation workers"
+requires-python = ">=3.11"
+dependencies = [
+  "cryptography>=43.0.0,<48.0.0",
+  "e2b-desktop>=2.4.2,<3.0.0",
+  "playwright>=1.45.0,<2.0.0",
+  "python-dotenv>=1.0.0,<2.0.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.4"]
+
+[tool.setuptools]
+include-package-data = false
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["parity", "parity.*"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["__pycache__/*", "*.pyc", "*.pyo"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

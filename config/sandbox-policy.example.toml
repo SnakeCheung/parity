@@ -1,0 +1,55 @@
+[identity]
+tenant_boundary = "channel_account"
+profile_scope = "one_site_one_login"
+one_writer_per_profile = true
+
+[runtime]
+provider = "e2b_managed"
+class = "microvm"
+template_id = "price-browser-clean-v1"
+rootfs_read_only = true
+allow_host_mounts = false
+vcpu = 2
+memory_mb = 2048
+disk_mb = 8192
+task_timeout_seconds = 300
+
+[control_plane]
+authenticated = true
+encrypted_transport = true
+public_envd = false
+public_debug_ports = false
+
+[egress]
+mode = "allowlist"
+allowed_domains = [
+  "jd.com",
+  "*.jd.com",
+  "360buyimg.com",
+  "*.360buyimg.com",
+  "jdcdn.com",
+  "*.jdcdn.com",
+  "jcloudcs.com",
+  "*.jcloudcs.com",
+]
+block_private_networks = true
+block_cloud_metadata = true
+stable_identity_per_profile = true
+rotate_on_rate_limit = false
+
+[live_view]
+enabled_by_default = false
+requires_one_time_token = true
+audit_access = true
+max_seconds = 600
+viewport_width = 1024
+viewport_height = 768
+
+[persistence]
+mode = "encrypted_browser_context"
+encrypted_at_rest = true
+profile_scope = "channel_account"
+allow_authenticated_template_snapshots = false
+close_browser_before_export = true
+max_versions = 3
+checkpoint_ttl_hours = 720

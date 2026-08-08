@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Parity 京东当前页采集",
+  "version": "0.1.0",
+  "description": "由用户点击后读取当前京东搜索结果页，并发送到本机 Parity。",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "action": {
+    "default_title": "采集当前京东搜索页",
+    "default_popup": "popup.html"
+  }
+}
